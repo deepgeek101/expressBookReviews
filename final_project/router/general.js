@@ -3,6 +3,8 @@ let books = require("./booksdb.js");
 let isValid = require("./auth_users.js").isValid;
 let users = require("./auth_users.js").users;
 const public_users = express.Router();
+const axios = require('axios');
+const BASE_URL = 'http://localhost:3000';
 
 
 public_users.post("/register", (req, res) => {
@@ -80,9 +82,6 @@ public_users.get('/review/:isbn', function (req, res) {
     }
 });
 
-const axios = require('axios');
-const BASE_URL = 'http://localhost:3000';
-
 function getBooksUsingPromise() {
   axios.get(`${BASE_URL}/`)
     .then(response => {
@@ -95,5 +94,5 @@ function getBooksUsingPromise() {
 
 // Call the function once to demonstrate it works
 getBooksUsingPromise();
-  
+
 module.exports.general = public_users;
