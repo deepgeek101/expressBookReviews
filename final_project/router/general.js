@@ -108,5 +108,14 @@ function getBookByISBNUsingPromise(isbn) {
   // Example call to test
 getBookByISBNUsingPromise('1');  // replace with a real ISBN
   
-  
+function getBooksByTitle(title) {
+    axios.get(`http://localhost:5000/books/title/${title}`)
+      .then(response => {
+        console.log(`Books with title "${title}":`, response.data);
+      })
+      .catch(error => {
+        console.error(`Error fetching books by title "${title}":`, error);
+      });
+}
+
 module.exports.general = public_users;
