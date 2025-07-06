@@ -64,14 +64,7 @@ public_users.get('/title/:title', function (req, res) {
         return res.status(404).json({ message: "No books found with this title" });
     }
 });
-public_users.get('/review/:isbn', function (req, res) {
-    const isbn = req.params.isbn;
-    if (books[isbn] && books[isbn].reviews) {
-        return res.status(200).json(books[isbn].reviews);
-    } else {
-        return res.status(404).json({ message: "Reviews not found for this ISBN" });
-    }
-});
+
 //  Get book review
 public_users.get('/review/:isbn', function (req, res) {
     const isbn = req.params.isbn;
@@ -83,7 +76,7 @@ public_users.get('/review/:isbn', function (req, res) {
 });
 
 function getBooksUsingPromise() {
-  axios.get(`${BASE_URL}/`)
+    axios.get(`${BASE_URL}/books/`)
     .then(response => {
       console.log("Books fetched with Promise:", response.data);
     })
@@ -96,7 +89,7 @@ function getBooksUsingPromise() {
 getBooksUsingPromise();
 
 function getBookByISBNUsingPromise(isbn) {
-    axios.get(`${BASE_URL}/isbn/${isbn}`)
+    axios.get(`${BASE_URL}/books/isbn/${isbn}`)
       .then(response => {
         console.log(`Book details for ISBN ${isbn}:`, response.data);
       })
