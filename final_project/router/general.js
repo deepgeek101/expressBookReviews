@@ -117,5 +117,5 @@ function getBooksByTitle(title) {
         console.error(`Error fetching books by title "${title}":`, error);
       });
 }
-
+getBooksByTitle('The Divine Comedy')
 module.exports.general = public_users;
