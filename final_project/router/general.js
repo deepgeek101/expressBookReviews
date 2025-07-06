@@ -95,4 +95,18 @@ function getBooksUsingPromise() {
 // Call the function once to demonstrate it works
 getBooksUsingPromise();
 
+function getBookByISBNUsingPromise(isbn) {
+    axios.get(`${BASE_URL}/isbn/${isbn}`)
+      .then(response => {
+        console.log(`Book details for ISBN ${isbn}:`, response.data);
+      })
+      .catch(error => {
+        console.error(`Error fetching book by ISBN ${isbn}:`, error.message);
+      });
+  }
+  
+  // Example call to test
+getBookByISBNUsingPromise('1');  // replace with a real ISBN
+  
+  
 module.exports.general = public_users;
