@@ -80,4 +80,20 @@ public_users.get('/review/:isbn', function (req, res) {
     }
 });
 
+const axios = require('axios');
+const BASE_URL = 'http://localhost:3000';
+
+function getBooksUsingPromise() {
+  axios.get(`${BASE_URL}/`)
+    .then(response => {
+      console.log("Books fetched with Promise:", response.data);
+    })
+    .catch(error => {
+      console.error("Error fetching books with Promise:", error.message);
+    });
+}
+
+// Call the function once to demonstrate it works
+getBooksUsingPromise();
+  
 module.exports.general = public_users;
