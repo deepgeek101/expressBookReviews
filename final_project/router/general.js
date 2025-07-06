@@ -107,9 +107,20 @@ function getBookByISBNUsingPromise(isbn) {
   
   // Example call to test
 getBookByISBNUsingPromise('1');  // replace with a real ISBN
-  
+
+function getBooksByAuthor(author) {
+    axios.get(`${BASE_URL}/books/author/${author}`)
+      .then(response => {
+        console.log(`Books by author ${author}:`, response.data);
+      })
+      .catch(error => {
+        console.error(`Error fetching books by author ${author}:`, error);
+      });
+  }
+getBooksByAuthor('Dante Alighieri');
+
 function getBooksByTitle(title) {
-    axios.get(`http://localhost:5000/books/title/${title}`)
+    axios.get(`${BASE_URL}/books/title/${title}`)
       .then(response => {
         console.log(`Books with title "${title}":`, response.data);
       })
@@ -117,5 +128,5 @@ function getBooksByTitle(title) {
         console.error(`Error fetching books by title "${title}":`, error);
       });
 }
-getBooksByTitle('The Divine Comedy')
+getBooksByTitle('The Divine Comedy');
 module.exports.general = public_users;
